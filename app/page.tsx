@@ -1,6 +1,6 @@
 import SearchBar from "@/components/SearchBar";
+import Header from "@/components/header/Header";
 import UserInfo from "@/components/profile/UserInfo";
-import { MdOutlineLightMode } from "react-icons/md";
 
 export default function Home() {
    const usuarioGitHub = {
@@ -42,15 +42,8 @@ export default function Home() {
    };
 
    return (
-      <main className="w-96 max-w-96 bg-blue-950">
-         <header className="flex justify-between items-center">
-            <h1>GitHub Profile</h1>
-
-            <div className="flex items-center gap-x-2">
-               Claro
-               <MdOutlineLightMode />
-            </div>
-         </header>
+      <main className="w-full max-w-[500px] p-4">
+         <Header />
 
          <SearchBar />
 

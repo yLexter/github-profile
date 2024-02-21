@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "../lib/utils";
+import ContextProvider from "@/contexts/ContextProvider";
 
 export const fontSans = FontSans({
    subsets: ["latin"],
@@ -27,7 +28,7 @@ export default function RootLayout({
                "h-screen w-screen"
             )}
          >
-            {children}
+            <ContextProvider>{children}</ContextProvider>
          </body>
       </html>
    );
