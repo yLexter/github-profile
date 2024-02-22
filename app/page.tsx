@@ -42,11 +42,9 @@ export default function Home() {
    };
 
    return (
-      <main className="w-full max-w-[500px] p-4">
+      <main className="flex flex-col gap-y-8 w-full max-w-[500px] p-4">
          <Header />
-
          <SearchBar />
-
          <UserInfo userInfo={usuarioGitHub} />
       </main>
    );

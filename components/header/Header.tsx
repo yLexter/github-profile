@@ -17,13 +17,15 @@ export default function Header({}: IPropHeader) {
       <header className="flex justify-between items-center">
          <h1 className="text-3xl font-semibold ">GitHub Profile</h1>
 
-         <div className="flex items-center gap-x-2">
-            {theme === "light" && <span>Claro</span>}
-            {theme === "dark" && <span>Escuro</span>}
-
-            <button className="clear" onClick={toggleTheme}>
+         <div className="flex items-center gap-x-2 mt-1">
+            <button
+               className="flex items-center gap-x-1 clear"
+               onClick={toggleTheme}
+            >
                {theme === "light" && <MdOutlineLightMode />}
                {theme === "dark" && <MdDarkMode />}
+               {theme === "light" && <span>Claro</span>}
+               {theme === "dark" && <span>Escuro</span>}
             </button>
          </div>
       </header>

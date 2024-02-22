@@ -1,6 +1,10 @@
 import React from "react";
+import { IconType } from "react-icons";
 import { MdGroup } from "react-icons/md";
-import { twJoin } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
+import { FaBuilding } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { CiLocationOn } from "react-icons/ci";
 
 type IPropUserInfo = {
    userInfo: {
@@ -37,6 +41,30 @@ type IPropUserInfo = {
       created_at: string;
       updated_at: string;
    };
+};
+
+const InfoUser = ({
+   label,
+   Icon,
+   link,
+   className,
+}: {
+   Icon: IconType;
+   label?: string | null;
+   link?: string | null;
+   className?: string;
+}) => {
+   return (
+      <div className={twMerge("flex items-center gap-x-1", className)}>
+         <Icon className="w-4 h-4" />
+         {link && (
+            <a className="hover:underline" href={link} target="_blank">
+               {label}
+            </a>
+         )}
+         {!!!link && <span>{label ?? "Não Avaliado"}</span>}
+      </div>
+   );
 };
 
 export default function UserInfo({
@@ -76,8 +104,8 @@ export default function UserInfo({
    },
 }: IPropUserInfo) {
    return (
-      <section className="w-full bg-card border p-4 text-card-foreground rounded-lg">
-         <header className="flex gap-x-4 items-center mb-4">
+      <section className="flex flex-col gap-y-4 w-full bg-card border p-4 text-card-foreground rounded-lg">
+         <header className="flex gap-x-4 items-center">
             <img
                className="rounded-full w-32 h-32"
                src={avatar_url}
@@ -118,11 +146,16 @@ export default function UserInfo({
 
          <p>{bio}</p>
 
-         <div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+         <div className="flex justify-between items-center ">
+            <InfoUser Icon={CiLocationOn} label={location} />
+            <InfoUser
+               Icon={FaTwitter}
+               link={
+                  twitter_username && `https://twitter.com/${twitter_username}`
+               }
+               label={twitter_username}
+            />
+            <InfoUser Icon={FaBuilding} label={company} />
          </div>
       </section>
    );
