@@ -22,10 +22,8 @@ export default function Header({}: IPropHeader) {
                className="flex items-center gap-x-1 clear"
                onClick={toggleTheme}
             >
-               {theme === "light" && <MdOutlineLightMode />}
-               {theme === "dark" && <MdDarkMode />}
-               {theme === "light" && <span>Claro</span>}
-               {theme === "dark" && <span>Escuro</span>}
+               {theme === "light" ? <MdOutlineLightMode /> : <MdDarkMode />}
+               {theme === "light" ? <span>Claro</span> : <span>Escuro</span>}
             </button>
          </div>
       </header>

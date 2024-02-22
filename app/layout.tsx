@@ -24,8 +24,7 @@ export default function RootLayout({
          <body
             className={cn(
                `${fontSans.className}`,
-               "flex items-center justify-center",
-               "h-screen w-screen"
+               "flex justify-center items-center"
             )}
          >
             <ContextProvider>{children}</ContextProvider>
