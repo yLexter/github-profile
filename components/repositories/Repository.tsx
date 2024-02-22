@@ -1,9 +1,10 @@
 import { IRepositoryResponse, IUserInfoResponse, utils } from "@/types";
 import React from "react";
-import { twJoin } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import RepositoryFiles from "./RepositoryFiles";
 import { FaCodeFork } from "react-icons/fa6";
 import { MdStarOutline } from "react-icons/md";
+import LanguagesData from "./LanguagesData";
 
 type IPropRepository = {
    repository: IRepositoryResponse;
@@ -93,7 +94,7 @@ export default function Repository({
       default_branch,
    },
 }: IPropRepository) {
-   const aboutLanguage = utils.getAboutLanguage(language);
+   const { color } = utils.getAboutLanguage(language);
 
    return (
       <article className="mb-5">
@@ -107,25 +108,25 @@ export default function Repository({
 
             <p className="text-muted-foreground text-sm mb-2">{description}</p>
 
-            <div className="flex gap-x-4 items-center text-muted-foreground text-sm">
+            <div className="flex gap-x-4 justify-between items-center text-muted-foreground text-sm">
+               <p>Criado em {utils.formatDate(created_at)}</p>
                <p
-                  className={twJoin(
+                  className={twMerge(
                      "relative",
-                     "before:content-[''] before:absolute ",
-                     `before:bg-[${aboutLanguage.color}] before:rounded-full`,
-                     "before:h-2 before:w-2 before:top-[30%] before:left-[-15%]"
+                     "before:content-[''] before:absolute",
+                     "before:h-2 before:w-2 before:top-[30%] before:left-[-15%]",
+                     `before:bg-[${color}] before:rounded-full`
                   )}
                >
                   {language}
                </p>
-               <p>Criado em {utils.formatDate(created_at)}</p>
             </div>
          </header>
 
          <RepositoryFiles profile={profile} repository={repository} />
 
-         <div className="flex justify-between items-center mb-4">
-            <div>
+         <div className="flex justify-between mb-4">
+            <div className="flex-1">
                <h3 className="font-semibold mb-2">Sobre Repositório</h3>
 
                <div className="text-muted-foreground">
@@ -141,9 +142,9 @@ export default function Repository({
                </div>
             </div>
 
-            <div>
+            <div className="flex-1">
                <h3 className="font-semibold mb-2">Linguagens</h3>
-               <div></div>
+               <LanguagesData />
             </div>
          </div>
 

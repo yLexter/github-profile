@@ -87,7 +87,7 @@ class Utils {
 
       if (!aboutLanague) {
          return {
-            color: "black",
+            color: "#993399",
          };
       }
 

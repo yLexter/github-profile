@@ -127,4 +127,8 @@ export interface IRepositoryFile {
    type: string;
 }
 
+export interface ILanguagesRepositoryResponse {
+   [key: string]: number;
+}
+
 export type TLanguage = keyof typeof utils.languageAbout;
