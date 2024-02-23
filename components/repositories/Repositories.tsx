@@ -113,7 +113,7 @@ type IPropRepositories = {
 
 export default function Repositories({ profile }: IPropRepositories) {
    return (
-      <div className="border bg-card p-4 rounded-lg">
+      <section className="border bg-card p-4 rounded-lg">
          <h1 className="text-2xl font-semibold mb-4">Repositorios</h1>
 
          <div className="mb-4">
@@ -147,6 +147,6 @@ export default function Repositories({ profile }: IPropRepositories) {
                Clique Aqui!
             </a>{" "}
          </p>
-      </div>
+      </section>
    );
 }

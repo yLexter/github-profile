@@ -2,11 +2,16 @@
 
 import React from "react";
 import { ThemeProvider } from "./ThemeProvider";
+import { UserGithubContextProvider } from "./UserProvider";
 
 type IPropContextProvider = {
    children: React.ReactNode;
 };
 
 export default function ContextProvider({ children }: IPropContextProvider) {
-   return <ThemeProvider>{children}</ThemeProvider>;
+   return (
+      <ThemeProvider>
+         <UserGithubContextProvider>{children}</UserGithubContextProvider>
+      </ThemeProvider>
+   );
 }

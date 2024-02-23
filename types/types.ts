@@ -131,4 +131,19 @@ export interface ILanguagesRepositoryResponse {
    [key: string]: number;
 }
 
+export type TRepository = Pick<
+   IRepositoryResponse,
+   | "id"
+   | "name"
+   | "full_name"
+   | "description"
+   | "html_url"
+   | "default_branch"
+   | "created_at"
+   | "updated_at"
+> & {
+   languages: ILanguagesRepositoryResponse;
+   files: IRepositoryFile[];
+};
+
 export type TLanguage = keyof typeof utils.languageAbout;
