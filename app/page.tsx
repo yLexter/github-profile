@@ -2,6 +2,8 @@ import SearchBar from "@/components/SearchBar";
 import Header from "@/components/header/Header";
 import UserInfo from "@/components/profile/UserInfo";
 import Repositories from "@/components/repositories/Repositories";
+import { useUserGithubContext } from "@/contexts/UserProvider";
+import { Suspense } from "react";
 
 export default function Home() {
    const usuarioGitHub = {
@@ -46,8 +48,8 @@ export default function Home() {
       <main className="mt-10 flex flex-col gap-y-8 h-auto w-full max-w-[600px] p-4">
          <Header />
          <SearchBar />
-         <UserInfo userInfo={usuarioGitHub} />
-         <Repositories profile={usuarioGitHub} />
+         <UserInfo />
+         <Repositories />
       </main>
    );
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import { IRepositoryResponse, IUserInfoResponse } from "@/types";
 import React from "react";
 import Repository from "./Repository";
@@ -7,6 +9,8 @@ import {
    AccordionItem,
    AccordionTrigger,
 } from "@/components/ui/accordion";
+import { LoadingRepositories } from "../common/loading";
+import { useUserGithubContext } from "@/contexts/UserProvider";
 
 const example: IRepositoryResponse[] = Array.from({ length: 5 }).map((_, i) => {
    return {
@@ -106,12 +110,18 @@ const example: IRepositoryResponse[] = Array.from({ length: 5 }).map((_, i) => {
    };
 });
 
-type IPropRepositories = {
-   repositories?: IRepositoryResponse[];
-   profile: IUserInfoResponse;
-};
+type IPropRepositories = {};
 
-export default function Repositories({ profile }: IPropRepositories) {
+export default function Repositories({}: IPropRepositories) {
+   const {
+      data: { profile },
+      isLoading,
+   } = useUserGithubContext();
+
+   if (isLoading) {
+      return <LoadingRepositories />;
+   }
+
    return (
       <section className="border bg-card p-4 rounded-lg">
          <h1 className="text-2xl font-semibold mb-4">Repositorios</h1>
