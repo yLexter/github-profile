@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GitHub Profile
 
-## Getting Started
+## Descrição
 
-First, run the development server:
+O projeto GitHub Profile é uma aplicação web desenvolvida com Next.js que permite buscar dados de usuários do GitHub de forma simplificada. Com esta aplicação, você pode obter informações básicas sobre um usuário do GitHub, como nome, foto de perfil, número de seguidores e repositórios públicos.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Funcionalidades
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-  Buscar dados de um usuário do GitHub pelo nome de usuário.
+-  Exibir informações como nome, foto de perfil, seguidores e repositórios públicos do usuário.
+-  Suporte a mudança de tema
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tecnologias utilizadas
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+-  [Next.js](https://nextjs.org/)
+-  [Shadcn UI](https://ui.shadcn.com)
+-  [Tailwind CSS](https://tailwindcss.com/)
+-  TypeScript
 
-## Learn More
+# Instalação do Projeto
 
-To learn more about Next.js, take a look at the following resources:
+Para instalar e executar o projeto GitHub User Data Fetcher, siga os passos abaixo:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone o repositório:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```sh
+   git clone https://github.com/yLexter/github-profile.git
 
-## Deploy on Vercel
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Acesse o diretório do projeto:
+   `sh cd nome-do-repositorio`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. Instale as dependências:
+   `sh npm install`
+
+4. Execute o projeto:
+   `sh npm install`
+
+5. Acesse a aplicação:
+
+-  Abra o seu navegador e acesse http://localhost:3000.

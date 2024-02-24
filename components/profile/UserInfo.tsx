@@ -7,8 +7,8 @@ import { FaBuilding } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
 import { useUserGithubContext } from "@/contexts/UserProvider";
-import { LoadingUserInfo } from "../common/loading";
-import InfoUser from "./InfoUser";
+import { LoadingUserInfo } from "../loadings/LoadingUserInfo";
+import SocialUser from "./SocialUser";
 
 type IPropUserInfo = {};
 
@@ -66,8 +66,8 @@ export default function UserInfo({}: IPropUserInfo) {
          <p className="text-sm">{profile.bio}</p>
 
          <div className="flex justify-between items-center ">
-            <InfoUser Icon={CiLocationOn} label={profile.location} />
-            <InfoUser
+            <SocialUser Icon={CiLocationOn} label={profile.location} />
+            <SocialUser
                Icon={FaTwitter}
                link={
                   profile.twitter_username &&
@@ -75,7 +75,7 @@ export default function UserInfo({}: IPropUserInfo) {
                }
                label={profile.twitter_username}
             />
-            <InfoUser Icon={FaBuilding} label={profile.company} />
+            <SocialUser Icon={FaBuilding} label={profile.company} />
          </div>
       </section>
    );

@@ -1,6 +1,5 @@
 "use client";
 
-import { IRepositoryResponse, IUserInfoResponse } from "@/types";
 import React from "react";
 import Repository from "./Repository";
 import {
@@ -9,8 +8,8 @@ import {
    AccordionItem,
    AccordionTrigger,
 } from "@/components/ui/accordion";
-import { LoadingRepositories } from "../common/loading";
 import { useUserGithubContext } from "@/contexts/UserProvider";
+import { LoadingRepositories } from "../loadings/LoadingRepositories";
 
 type IPropRepositories = {};
 
@@ -22,6 +21,10 @@ export default function Repositories({}: IPropRepositories) {
 
    if (isLoading) {
       return <LoadingRepositories />;
+   }
+
+   if (!repositories.length) {
+      return <></>;
    }
 
    return (

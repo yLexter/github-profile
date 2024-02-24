@@ -11,7 +11,7 @@ import React, { useContext, useEffect, useState, createContext } from "react";
 
 export type TUserGithubProvider = {
    data: TUserGitHub;
-   error: boolean;
+   error: string | null;
    isLoading: boolean;
    fetchUser: (user: string) => Promise<void>;
 };
@@ -23,39 +23,40 @@ export type TUserGitHub = {
 
 const defaultUser: TUserGitHub = {
    profile: {
-      login: "yLexter",
-      id: 94728279,
+      login: "raimudoneto",
+      id: 12345678,
       node_id: "U_kgDOBaVwVw",
-      avatar_url: "https://avatars.githubusercontent.com/u/94728279?v=4",
+      avatar_url: "./raimundo-neto.jpg",
       gravatar_id: "",
-      url: "https://api.github.com/users/yLexter",
-      html_url: "https://github.com/yLexter",
-      followers_url: "https://api.github.com/users/yLexter/followers",
+      url: "https://imgb.ifunny.co/images/fbe2558bb7ed170da3ef468819e4be27d54fe18060950b41f1d019cc2cb034d6_3.jpg",
+      html_url: "https://github.com/raimundoneto",
+      followers_url: "https://api.github.com/users/meowMaster/followers",
       following_url:
-         "https://api.github.com/users/yLexter/following{/other_user}",
-      gists_url: "https://api.github.com/users/yLexter/gists{/gist_id}",
+         "https://api.github.com/users/meowMaster/following{/other_user}",
+      gists_url: "https://api.github.com/users/meowMaster/gists{/gist_id}",
       starred_url:
-         "https://api.github.com/users/yLexter/starred{/owner}{/repo}",
-      subscriptions_url: "https://api.github.com/users/yLexter/subscriptions",
-      organizations_url: "https://api.github.com/users/yLexter/orgs",
-      repos_url: "https://api.github.com/users/yLexter/repos",
-      events_url: "https://api.github.com/users/yLexter/events{/privacy}",
+         "https://api.github.com/users/meowMaster/starred{/owner}{/repo}",
+      subscriptions_url:
+         "https://api.github.com/users/meowMaster/subscriptions",
+      organizations_url: "https://api.github.com/users/meowMaster/orgs",
+      repos_url: "https://api.github.com/users/meowMaster/repos",
+      events_url: "https://api.github.com/users/meowMaster/events{/privacy}",
       received_events_url:
-         "https://api.github.com/users/yLexter/received_events",
-      type: "User",
+         "https://api.github.com/users/meowMaster/received_events",
+      type: "Cat",
       site_admin: false,
-      name: "Lucas Ferreira",
+      name: "Raimundo Neto 4.0",
       company: null,
       blog: "",
-      location: "Campina Grande - PB",
+      location: "Rússia",
       email: null,
       hireable: null,
-      bio: "Desenvolvedor Web e Estudante do Curso de Ciencias da Computação da UEPB",
-      twitter_username: "yLexter1",
+      bio: "Olá sou raimundo neto",
+      twitter_username: "raimundoneto4",
       public_repos: 9,
       public_gists: 0,
-      followers: 6,
-      following: 6,
+      followers: 515461,
+      following: 4155656,
       created_at: "2021-11-20T02:52:27Z",
       updated_at: "2024-01-19T00:17:11Z",
    },
@@ -114,20 +115,8 @@ export const UserGithubContextProvider = ({
    children: React.ReactNode;
 }) => {
    const [userData, setUserData] = useState<TUserGitHub>(defaultUser);
-   const [error, setError] = useState(false);
+   const [error, setError] = useState<string | null>(null);
    const [loading, setLoading] = useState(false);
-
-   const mock = async (user: string) => {
-      setLoading(true);
-
-      try {
-         await new Promise((res) => setTimeout(res, 5 * 1000));
-      } catch (error) {
-         setError(true);
-      } finally {
-         setLoading(false);
-      }
-   };
 
    const fetchUser = async (user: string) => {
       let data: TUserGitHub = {
@@ -135,17 +124,18 @@ export const UserGithubContextProvider = ({
          repositories: [],
       };
 
+      setError(null);
       setLoading(true);
 
       try {
          const userData = await fetchUserData(user);
          const repositories = await fetchUserRepos(userData.repos_url);
-         const firstsRepositories = repositories.slice(2);
+         const firstsRepositories = repositories.slice(0, 2);
 
          data.profile = userData;
 
-         for await (let repository of firstsRepositories) {
-            const simplifiedRepository = {} as TRepository;
+         for await (let repositoryResponse of firstsRepositories) {
+            let repository = { ...repositoryResponse } as TRepository;
 
             const languages = await fetchRepoLanguages(
                repository.languages_url
@@ -153,24 +143,18 @@ export const UserGithubContextProvider = ({
 
             const files = await fetchRepoFiles(userData.login, repository.name);
 
-            simplifiedRepository["languages"] = languages;
-            simplifiedRepository["files"] = files;
-            simplifiedRepository["id"] = repository["id"];
-            simplifiedRepository["name"] = repository["name"];
-            simplifiedRepository["full_name"] = repository["full_name"];
-            simplifiedRepository["description"] = repository["description"];
-            simplifiedRepository["html_url"] = repository["html_url"];
-            simplifiedRepository["default_branch"] =
-               repository["default_branch"];
-            simplifiedRepository["created_at"] = repository["created_at"];
-            simplifiedRepository["updated_at"] = repository["updated_at"];
+            repository["languages"] = languages;
+            repository["files"] = files;
 
-            data.repositories.push(simplifiedRepository);
+            data.repositories.push(repository);
          }
 
          setUserData(data);
       } catch (error) {
-         setError(true);
+         const message =
+            (error as Error)?.message || "Error inesperado, tente novamente.";
+
+         setError(message);
       } finally {
          setLoading(false);
       }
@@ -178,7 +162,7 @@ export const UserGithubContextProvider = ({
 
    return (
       <userGithubContext.Provider
-         value={{ data: userData, fetchUser: mock, error, isLoading: loading }}
+         value={{ data: userData, fetchUser, error, isLoading: loading }}
       >
          {children}
       </userGithubContext.Provider>

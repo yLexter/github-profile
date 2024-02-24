@@ -131,18 +131,7 @@ export interface ILanguagesRepositoryResponse {
    [key: string]: number;
 }
 
-export type TRepository = Pick<
-   IRepositoryResponse,
-   | "id"
-   | "name"
-   | "full_name"
-   | "description"
-   | "html_url"
-   | "default_branch"
-   | "created_at"
-   | "updated_at"
-   | "visibility" | "language" | "stargazers_count" | "forks_count"
-> & {
+export type TRepository = IRepositoryResponse & {
    languages: ILanguagesRepositoryResponse;
    files: IRepositoryFile[];
 };

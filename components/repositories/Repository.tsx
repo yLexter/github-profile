@@ -24,7 +24,6 @@ export default function Repository({
       html_url,
       description,
       created_at,
-      updated_at,
       stargazers_count,
       language,
       forks_count,
