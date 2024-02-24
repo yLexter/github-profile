@@ -141,6 +141,7 @@ export type TRepository = Pick<
    | "default_branch"
    | "created_at"
    | "updated_at"
+   | "visibility" | "language" | "stargazers_count" | "forks_count"
 > & {
    languages: ILanguagesRepositoryResponse;
    files: IRepositoryFile[];

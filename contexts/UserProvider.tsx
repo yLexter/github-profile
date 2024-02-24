@@ -118,6 +118,8 @@ export const UserGithubContextProvider = ({
    const [loading, setLoading] = useState(false);
 
    const mock = async (user: string) => {
+      setLoading(true);
+
       try {
          await new Promise((res) => setTimeout(res, 5 * 1000));
       } catch (error) {

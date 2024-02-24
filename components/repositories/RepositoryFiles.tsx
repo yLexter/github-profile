@@ -2,6 +2,7 @@ import {
    IRepositoryFile,
    IRepositoryResponse,
    IUserInfoResponse,
+   TRepository,
    utils,
 } from "@/types";
 import React from "react";
@@ -19,25 +20,9 @@ import { FaCodeBranch, FaFile } from "react-icons/fa";
 import { MdBrowserUpdated, MdOutlineVisibility } from "react-icons/md";
 
 type IPropRepositoryFiles = {
-   repository: IRepositoryResponse;
+   repository: TRepository;
    profile: IUserInfoResponse;
 };
-
-const files = Array.from({ length: 5 }).map(() => {
-   return {
-      name: ".gitignore",
-      path: ".gitignore",
-      sha: "b512c09d476623ff4bf8d0d63c29b784925dbdf8",
-      size: 12,
-      url: "https://api.github.com/repos/yLexter/APIs/contents/.gitignore?ref=main",
-      html_url: "https://github.com/yLexter/APIs/blob/main/.gitignore",
-      git_url:
-         "https://api.github.com/repos/yLexter/APIs/git/blobs/b512c09d476623ff4bf8d0d63c29b784925dbdf8",
-      download_url:
-         "https://raw.githubusercontent.com/yLexter/APIs/main/.gitignore",
-      type: "file",
-   };
-});
 
 export default function RepositoryFiles({
    repository,
@@ -79,7 +64,7 @@ export default function RepositoryFiles({
                </TableCell>
             </TableRow>
 
-            {files
+            {repository.files
                .sort((a, b) => a.name.localeCompare(b.name))
                .map((file, i) => {
                   return (
