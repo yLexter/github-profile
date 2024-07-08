@@ -1,45 +1,45 @@
 # GitHub Profile
 
-## Descrição
+## Description
 
-O projeto GitHub Profile é uma aplicação web desenvolvida com Next.js que permite buscar dados de usuários do GitHub de forma simplificada. Com esta aplicação, você pode obter informações básicas sobre um usuário do GitHub, como nome, foto de perfil, número de seguidores e repositórios públicos.
+The GitHub Profile project is a web application developed with Next.js that allows you to retrieve user data from GitHub in a simplified way. With this application, you can get basic information about a GitHub user such as name, profile photo, number of followers, and public repositories.
 
-![Interface do Projeto](https://i.ibb.co/s1Pskg1/imagem-2024-02-24-021325493.png)
+![Project Interface](https://i.ibb.co/s1Pskg1/imagem-2024-02-24-021325493.png)
 
-## Funcionalidades
+## Functionalities
 
--  Buscar dados de um usuário do GitHub pelo nome de usuário.
--  Exibir informações como nome, foto de perfil, seguidores e repositórios públicos do usuário.
--  Suporte a mudança de tema
+- Search data for a GitHub user by username.
+- Display information such as user name, profile photo, followers and public repositories.
+- Support theme change
 
-## Tecnologias utilizadas
+## Technologies used
 
--  [Next.js](https://nextjs.org/)
--  [Shadcn UI](https://ui.shadcn.com)
--  [Tailwind CSS](https://tailwindcss.com/)
--  TypeScript
+- [Next.js](https://nextjs.org/)
+- [Shadcn UI](https://ui.shadcn.com)
+- [Tailwind CSS](https://tailwindcss.com/)
+- TypeScript
 
-# Instalação do Projeto
+# Project Installation
 
-Para instalar e executar o projeto GitHub User Data Fetcher, siga os passos abaixo:
+To install and run the GitHub User Data Fetcher project, follow the steps below:
 
-1. **Clone o repositório:**
+1. **Clone the repository:**
 
-   ```sh
-   git clone https://github.com/yLexter/github-profile.git
+ ```sh
+ git clone https://github.com/yLexter/github-profile.git
 
-   ```
-2. Instale as dependências:
-   ```sh
-   npm install
+ ```
+2. Install dependencies:
+ ```sh
+ npm install
 
-   ```
+ ```
 
-4. Execute o projeto:
-      ```sh
-   npm run dev
+4. Run the project:
+ ```sh
+ npm run dev
 
-   ```
-      
-6. Acesse a aplicação:
--  Abra o seu navegador e acesse http://localhost:3000.
+ ```
+
+6. Access the application:
+- Open your browser and access http://localhost:3000.
